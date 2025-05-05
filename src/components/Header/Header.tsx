@@ -22,7 +22,7 @@ export const Header: React.FC = () => {
             </S.ButtonsWrapper>
         </S.Wrapped> 
 
-        <Cart showCart={showCart}/>   
+        <Cart showCart={showCart} onClose={() => setShowCart(false)}/>   
     </S.StyledHeader>
 )
 }
