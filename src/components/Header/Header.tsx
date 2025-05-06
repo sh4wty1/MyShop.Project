@@ -2,17 +2,38 @@ import * as S from "./styles"
 import { FiLogIn, FiLogOut, FiShoppingCart } from "react-icons/fi";
 import { useState } from "react"
 import { Cart } from "../Cart/Cart";
+import { useDispatch, useSelector } from "react-redux";
+import { RootReducer } from "../../redux/root-reducer";
 
 export const Header: React.FC = () => {
+    const { user } = useSelector((rootReducer: RootReducer) => rootReducer.userReducer)
+    const dispatch = useDispatch()
     const [authBtn, setAuthBtn] = useState(false)
     const [showCart, setShowCart] = useState(false)
 
+    const handleUserAuth = () => {
+        setAuthBtn(!authBtn)
+        if (user === null) {
+            dispatch({
+                type: "user/login",
+                payload: {
+                    nome: "Lucas Fassi",
+                    email: "lucas@email.com"
+                }
+            })
+        } else {
+            dispatch({
+                type: "user/logout",
+            })
+        }
+    }
+    
     return (
     <S.StyledHeader>
         <S.Wrapped>
             <S.HeaderTitle>MyShop.</S.HeaderTitle>
             <S.ButtonsWrapper>
-                <S.AuthButton $auth={authBtn} onClick={() => setAuthBtn(!authBtn)}>
+                <S.AuthButton $auth={authBtn} onClick={handleUserAuth}>
                     {!authBtn ? <>Login <FiLogIn /></> : <>Logout <FiLogOut /></>}
                 </S.AuthButton>
                 <S.CartButton onClick={() => setShowCart(!showCart)}>
