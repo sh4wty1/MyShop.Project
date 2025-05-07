@@ -7,10 +7,10 @@ interface ContainerProps {
 
 export const Container = styled.aside<ContainerProps>`
     position: fixed;
-    right: ${(props) => props.showCart ? "0" : "-400px"};
+    right: ${(props) => props.showCart ? "0" : "-500px"};
     top: 0;
     height: 100dvh;
-    width: 400px;
+    width: 500px;
     background-color: #cfccbb;
     box-shadow: -5px 0 15px rgba(0, 0, 0, 0.4);
     padding: 2rem;
@@ -22,6 +22,7 @@ export const Wrapper = styled.div`
     display: flex;
     justify-content: space-between;
     align-items: flex-end;
+    margin-bottom: 2rem;
 `
 
 export const Title = styled.h1`
@@ -36,4 +37,20 @@ export const ExitBtn = styled.button`
     background-color: #cfccbb;
     font-size: 1.5rem;
     cursor: pointer;
+    transition: 0.2s;
+
+    &:hover {
+        transition: 0.2s;
+        color: #a92727;
+    }
+`
+
+export const ItemsList = styled.ul`
+    list-style: none;
+`
+
+export const Total = styled.strong`
+    margin-top: 2rem;
+    display: flex;
+    justify-content: flex-end;
 `
