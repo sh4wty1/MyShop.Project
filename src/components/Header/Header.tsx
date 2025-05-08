@@ -17,8 +17,8 @@ export const Header: React.FC = () => {
             dispatch({
                 type: "user/login",
                 payload: {
-                    nome: "Lucas Fassi",
-                    email: "lucas@email.com"
+                    name: "User name",
+                    email: "user@example.com"
                 }
             })
         } else {
